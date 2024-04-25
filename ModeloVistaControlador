@@ -1,0 +1,32 @@
+import javax.swing.*;
+
+public class ModeloVistaControlador extends JFrame {
+    private JTabbedPane tabbedPane = new JTabbedPane();
+    private Panel1 panel1 = new Panel1();
+    private Panel2 panel2 = panel1.getPanel2(); // Obtener una referencia al Panel2 desde Panel1
+
+    public ModeloVistaControlador() {
+        initView();
+    }
+
+    private void initView() {
+        setTitle("");
+        setSize(500, 300);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        tabbedPane.add("Nuevo Evento", panel1);
+        tabbedPane.add("Eventos", panel2); // Agregar Panel2 al tabbedPane directamente
+
+        add(tabbedPane);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new ModeloVistaControlador().setVisible(true);
+            }
+        });
+    }
+}
